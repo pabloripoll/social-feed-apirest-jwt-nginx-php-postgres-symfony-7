@@ -24,3 +24,4 @@
 ###< lexik/jwt-authentication-bundle ###
 
 /vault
+supervisord.log
