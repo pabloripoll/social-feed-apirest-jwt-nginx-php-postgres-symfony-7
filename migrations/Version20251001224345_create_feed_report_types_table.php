@@ -7,10 +7,10 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-final class Version20251001225411 extends AbstractMigration
+final class Version20251001224345 extends AbstractMigration
 {
     /** string $table */
-    private string $table = 'posts_votes';
+    private string $table = 'feed_report_types';
 
     public function getDescription(): string
     {
@@ -26,24 +26,28 @@ final class Version20251001225411 extends AbstractMigration
             'notnull' => true,
         ]);
 
-        $table->addColumn('user_id', 'bigint', [
-            'notnull' => true
+        $table->addColumn('key', 'string', [
+            'length' => 64,
+            'notnull' => true,
         ]);
 
-        $table->addColumn('post_id', 'bigint', [
-            'notnull' => true
+        $table->addColumn('title', 'string', [
+            'length' => 64,
+            'notnull' => true,
         ]);
 
-        $table->addColumn('up', 'boolean', [
-            'default' => false
-        ]);
-
-        $table->addColumn('down', 'boolean', [
-            'default' => false
-        ]);
-
-        $table->addColumn('refresh_count', 'integer', [
+        $table->addColumn('description', 'string', [
+            'length' => 256,
             'notnull' => false,
+        ]);
+
+        $table->addColumn('level', 'smallint', [
+            'notnull' => true,
+            'default' => 0
+        ]);
+
+        $table->addColumn('position', 'smallint', [
+            'notnull' => true,
             'default' => 0
         ]);
 
@@ -56,9 +60,6 @@ final class Version20251001225411 extends AbstractMigration
         ]);
 
         $table->setPrimaryKey(['id']);
-        $table->addForeignKeyConstraint('users', ['user_id'], ['id'], ['onDelete' => 'CASCADE']);
-        $table->addForeignKeyConstraint('posts', ['post_id'], ['id'], ['onDelete' => 'CASCADE']);
-        $table->addIndex(['created_at'], 'idx_'. $this->table .'created_at');
     }
 
     public function down(Schema $schema): void

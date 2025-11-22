@@ -7,10 +7,10 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-final class Version20251001193924 extends AbstractMigration
+final class Version20251001225538 extends AbstractMigration
 {
     /** string $table */
-    private string $table = 'posts_categories';
+    private string $table = 'feed_posts_visits';
 
     public function getDescription(): string
     {
@@ -26,34 +26,16 @@ final class Version20251001193924 extends AbstractMigration
             'notnull' => true,
         ]);
 
-        $table->addColumn('key', 'string', [
-            'length' => 64,
-            'notnull' => true,
+        $table->addColumn('user_id', 'bigint', [
+            'notnull' => true
         ]);
 
-        $table->addColumn('title', 'string', [
-            'length' => 64,
-            'notnull' => true,
+        $table->addColumn('post_id', 'bigint', [
+            'notnull' => true
         ]);
 
-        $table->addColumn('visits_count', 'integer', [
-            'notnull' => false,
-            'default' => 0
-        ]);
-
-        $table->addColumn('posts_count', 'integer', [
-            'notnull' => false,
-            'default' => 0
-        ]);
-
-        $table->addColumn('posts_votes_up_count', 'integer', [
-            'notnull' => false,
-            'default' => 0
-        ]);
-
-        $table->addColumn('posts_votes_down_count', 'integer', [
-            'notnull' => false,
-            'default' => 0
+        $table->addColumn('visitor_user_id', 'bigint', [
+            'notnull' => true
         ]);
 
         $table->addColumn('created_at', 'datetime', [
@@ -65,7 +47,9 @@ final class Version20251001193924 extends AbstractMigration
         ]);
 
         $table->setPrimaryKey(['id']);
-        $table->addUniqueIndex(['key'], 'uniq_'.$this->table.'_key');
+        $table->addForeignKeyConstraint('users', ['user_id'], ['id'], ['onDelete' => 'CASCADE']);
+        $table->addForeignKeyConstraint('posts', ['post_id'], ['id'], ['onDelete' => 'CASCADE']);
+        $table->addForeignKeyConstraint('users', ['visitor_user_id'], ['id'], ['onDelete' => 'CASCADE']);
     }
 
     public function down(Schema $schema): void

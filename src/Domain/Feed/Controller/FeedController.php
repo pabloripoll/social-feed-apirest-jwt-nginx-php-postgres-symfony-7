@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
-class PostFeedController extends AbstractController
+class FeedController extends AbstractController
 {
     #[Route('/api/v1/feed', name: 'feed_listing', methods: ['GET'])]
     public function listSections(Request $request): JsonResponse

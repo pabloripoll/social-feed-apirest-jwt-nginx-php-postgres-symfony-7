@@ -46,7 +46,7 @@ final class Version20251001202129 extends AbstractMigration
             'default' => false
         ]);
 
-        $table->addColumn('is_on_post', 'boolean', [
+        $table->addColumn('is_on_feed_post', 'boolean', [
             'default' => false
         ]);
 
@@ -54,7 +54,7 @@ final class Version20251001202129 extends AbstractMigration
             'notnull' => false
         ]);
 
-        $table->addColumn('member_post_id', 'bigint', [
+        $table->addColumn('member_feed_post_id', 'bigint', [
             'notnull' => false
         ]);
 
@@ -69,7 +69,7 @@ final class Version20251001202129 extends AbstractMigration
         $table->setPrimaryKey(['id']);
         $table->addForeignKeyConstraint('users', ['admin_user_id'], ['id'], ['onDelete' => 'CASCADE']);
         $table->addForeignKeyConstraint('users', ['member_user_id'], ['id'], ['onDelete' => 'CASCADE']);
-        $table->addForeignKeyConstraint('posts', ['member_post_id'], ['id'], ['onDelete' => 'CASCADE']);
+        $table->addForeignKeyConstraint('feed_posts', ['member_feed_post_id'], ['id'], ['onDelete' => 'CASCADE']);
         $table->addIndex(['expires_at'], 'idx_'. $this->table .'expires_at');
     }
 

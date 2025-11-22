@@ -35,7 +35,7 @@ final class Version20251001200512 extends AbstractMigration
         ]);
 
         $table->addColumn('region_id', 'bigint', [
-            'notnull' => true
+            'notnull' => false
         ]);
 
         $table->addColumn('is_active', 'boolean', [

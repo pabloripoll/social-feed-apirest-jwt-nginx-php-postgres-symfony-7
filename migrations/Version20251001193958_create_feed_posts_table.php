@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 final class Version20251001193958 extends AbstractMigration
 {
     /** string $table */
-    private string $table = 'posts';
+    private string $table = 'feed_posts';
 
     public function getDescription(): string
     {

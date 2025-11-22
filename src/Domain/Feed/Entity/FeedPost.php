@@ -7,8 +7,8 @@ use App\Domain\User\Entity\User;
 use App\Domain\Geo\Entity\GeoRegion;
 
 #[ORM\Entity]
-#[ORM\Table(name: "posts")]
-#[ORM\UniqueConstraint(name: "uniq_posts_uid", columns: ["uid"])]
+#[ORM\Table(name: "feed_posts")]
+#[ORM\UniqueConstraint(name: "uniq_feed_posts_uid", columns: ["uid"])]
 class Post
 {
     #[ORM\Id]
