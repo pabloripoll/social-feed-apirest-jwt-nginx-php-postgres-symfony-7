@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Post\Entity;
+namespace App\Domain\Feed\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Domain\User\Entity\User;
@@ -9,7 +9,7 @@ use App\Domain\Geo\Entity\GeoRegion;
 #[ORM\Entity]
 #[ORM\Table(name: "feed_posts")]
 #[ORM\UniqueConstraint(name: "uniq_feed_posts_uid", columns: ["uid"])]
-class Post
+class FeedPost
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "AUTO")]

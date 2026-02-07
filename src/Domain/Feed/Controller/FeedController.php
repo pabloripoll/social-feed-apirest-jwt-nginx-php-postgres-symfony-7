@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Post\Controller;
+namespace App\Domain\Feed\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

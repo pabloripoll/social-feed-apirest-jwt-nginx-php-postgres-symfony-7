@@ -4,7 +4,7 @@ namespace App\Domain\Member\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Domain\User\Entity\User;
-use App\Domain\Post\Entity\Post;
+use App\Domain\Feed\Entity\FeedPost;
 use App\Domain\Member\Entity\MemberModerationType;
 
 #[ORM\Entity]
@@ -123,16 +123,16 @@ class MemberModeration
         return $this;
     }
 
-    #[ORM\ManyToOne(targetEntity: Post::class)]
+    #[ORM\ManyToOne(targetEntity: FeedPost::class)]
     #[ORM\JoinColumn(name: "member_post_id", referencedColumnName: "id", nullable: false, onDelete: "CASCADE")]
-    private Post $member_post_id;
+    private FeedPost $member_post_id;
 
-    public function getMemberPostId(): Post
+    public function getMemberPostId(): FeedPost
     {
         return $this->member_post_id;
     }
 
-    public function setMemberPostId(Post $member_post_id): self
+    public function setMemberPostId(FeedPost $member_post_id): self
     {
         $this->member_post_id = $member_post_id;
         return $this;

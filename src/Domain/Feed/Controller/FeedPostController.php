@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Domain\Post\Controller;
+namespace App\Domain\Feed\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
-class PostController extends AbstractController
+class FeedPostController extends AbstractController
 {
     #[Route('/api/v1/posts', name: 'posts_list_sections', methods: ['GET'])]
     public function listSections(Request $request): JsonResponse
